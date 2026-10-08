@@ -102,7 +102,7 @@ func (s *Server) issueSession(w http.ResponseWriter, r *http.Request, u store.Us
 		Value:    refresh,
 		Path:     "/v1/auth",
 		HttpOnly: true,
-		Secure:   s.cfg.IsProduction(),
+		Secure:   secureRequest(r),
 		SameSite: http.SameSiteLaxMode,
 		Expires:  time.Now().Add(s.issuer.RefreshTTL()),
 	})
@@ -279,7 +279,7 @@ func (s *Server) handleRefresh(w http.ResponseWriter, r *http.Request) {
 		// whole family rather than guessing which holder is the legitimate one.
 		s.log.Warn("refresh token reuse detected", "family", rec.FamilyID, "user", rec.UserID)
 		_ = s.store.RevokeFamily(r.Context(), rec.FamilyID)
-		s.clearRefreshCookie(w)
+		s.clearRefreshCookie(w, r)
 		writeError(w, http.StatusUnauthorized, "token_reused", "Please sign in again.")
 		return
 	}
@@ -317,14 +317,25 @@ func (s *Server) handleLogout(w http.ResponseWriter, r *http.Request) {
 			_ = s.store.RevokeFamily(r.Context(), rec.FamilyID)
 		}
 	}
-	s.clearRefreshCookie(w)
+	s.clearRefreshCookie(w, r)
 	w.WriteHeader(http.StatusNoContent)
 }
 
-func (s *Server) clearRefreshCookie(w http.ResponseWriter) {
+// secureRequest reports whether the browser reached us over HTTPS, directly or
+// through a proxy that ended the TLS and said so in X-Forwarded-Proto.
+//
+// A cookie's Secure flag has to follow the connection, not the environment: a
+// browser silently drops a Secure cookie it receives over plain http, which is how
+// a first deployment on a bare IP is served. A visitor who sends this header
+// themselves only changes the cookie they are themselves given.
+func secureRequest(r *http.Request) bool {
+	return r.TLS != nil || strings.EqualFold(r.Header.Get("X-Forwarded-Proto"), "https")
+}
+
+func (s *Server) clearRefreshCookie(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name: refreshCookie, Value: "", Path: "/v1/auth",
-		HttpOnly: true, Secure: s.cfg.IsProduction(),
+		HttpOnly: true, Secure: secureRequest(r),
 		SameSite: http.SameSiteLaxMode, MaxAge: -1,
 	})
 }
