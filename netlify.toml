@@ -1,4 +1,10 @@
+# Netlify serves only the static web app. It cannot proxy a WebSocket, so a Netlify
+# deployment must point the app at the public API (see WEB_API_URL in .env.example).
+#
+# This is a monorepo: the site's package is apps/web, an npm workspace, so the
+# dependencies install from the repository's root lockfile.
 [build]
+  base    = "apps/web"
   command = "npm run build"
   publish = "dist"
 

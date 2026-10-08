@@ -1,0 +1,12 @@
+# An allow-list. The web image needs the workspace manifests and the web app,
+# and nothing else: not the Go or Python services, not the docs, and above all
+# not .env, which holds keys that must never be baked into a layer.
+*
+!package.json
+!package-lock.json
+!apps/web
+
+apps/web/node_modules
+apps/web/dist
+apps/web/.env
+apps/web/.env.*

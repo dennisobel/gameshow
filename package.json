@@ -2,31 +2,20 @@
   "name": "on-the-board",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+  "description": "On The Board: a two-player, AI-hosted game show. A monorepo of apps/web (React), apps/api (Go) and apps/ai (Python).",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
   },
-  "dependencies": {
-    "@phosphor-icons/react": "^2.1.10",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "motion": "^13.4.6",
-    "radix-ui": "^1.6.7",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "tailwind-merge": "^3.7.0"
+  "scripts": {
+    "dev": "npm run dev --workspace @ontheboard/web",
+    "build": "npm run build --workspace @ontheboard/web",
+    "preview": "npm run preview --workspace @ontheboard/web",
+    "typecheck": "npm run typecheck --workspace @ontheboard/web"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.3",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.1",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2",
-    "vite": "^8.3.1"
+    "puppeteer-core": "^25.12.0"
   }
 }

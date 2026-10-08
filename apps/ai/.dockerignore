@@ -1,0 +1,10 @@
+# The image only needs pyproject.toml and app/. Everything else is either local
+# state or something that must never be baked into a layer.
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+tests
+.env
+.env.*

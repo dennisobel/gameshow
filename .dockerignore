@@ -1,0 +1,16 @@
+# The default for any image built from the repository root. The web image has its
+# own allow-list (apps/web/Dockerfile.dockerignore); the Go and Python services
+# build from their own folders and have their own .dockerignore.
+**/node_modules
+**/dist
+.git
+.kilo
+.claude
+apps/api
+apps/ai
+docs
+*.pdf
+*.log
+.env
+**/.env
+**/.env.*

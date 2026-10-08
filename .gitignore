@@ -1,3 +1,22 @@
+# node
 node_modules
 dist
+
+# python
+.venv
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# local config and logs
+.env
+.env.local
+.env.*.local
 *.log
+
+# reference material: large and copyrighted, not ours to redistribute
+/AI Engineering by Chip Huyen.pdf
+
+# build artefacts
+*.tsbuildinfo

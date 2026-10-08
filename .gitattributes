@@ -1,0 +1,17 @@
+# Let git normalise ordinary text, but pin the files that break when a Windows
+# checkout turns their line endings into CRLF: a Makefile or a shell script with
+# \r in it fails in ways that look nothing like a line-ending problem.
+* text=auto
+
+*.sh        text eol=lf
+Makefile    text eol=lf
+Dockerfile  text eol=lf
+*.dockerignore text eol=lf
+*.sql       text eol=lf
+*.go        text eol=lf
+go.work     text eol=lf
+*.py        text eol=lf
+
+*.pdf       binary
+*.png       binary
+*.mp3       binary

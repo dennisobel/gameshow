@@ -1,0 +1,789 @@
+{
+  "_note": "Hand-authored seed bank. Source 'seed', status 'approved'. Panel counts are out of 100 and double as point values, so a board answer's score states how many people said it. The AI pipeline writes rows in exactly this shape; see docs/ARCHITECTURE.md §4.",
+  "categories": [
+    {
+      "slug": "everyday",
+      "name": "Everyday Life",
+      "tagline": "The stuff we all do and never talk about",
+      "icon": "house",
+      "accent": "#9b7bff",
+      "sort_order": 10,
+      "questions": [
+        {
+          "prompt": "Name something people forget when they leave the house.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Keys", "panel_count": 34, "aliases": ["key", "car keys", "house keys", "my keys", "funguo"] },
+            { "text": "Phone", "panel_count": 26, "aliases": ["cell", "cellphone", "mobile", "smartphone", "simu", "my phone"] },
+            { "text": "Wallet", "panel_count": 15, "aliases": ["purse", "money", "cash", "handbag", "bag"] },
+            { "text": "To turn the lights off", "panel_count": 8, "aliases": ["lights", "light", "lights on", "switch off lights", "turn off lights"] },
+            { "text": "ID", "panel_count": 6, "aliases": ["id card", "identification", "licence", "license", "passport", "kitambulisho"] }
+          ]
+        },
+        {
+          "prompt": "Name something people do the moment they wake up.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Check their phone", "panel_count": 31, "aliases": ["phone", "check phone", "scroll", "look at phone", "social media"] },
+            { "text": "Brush their teeth", "panel_count": 22, "aliases": ["brush teeth", "teeth", "toothbrush"] },
+            { "text": "Stretch", "panel_count": 12, "aliases": ["stretching", "yawn and stretch"] },
+            { "text": "Drink water", "panel_count": 10, "aliases": ["water", "glass of water", "have a drink"] },
+            { "text": "Hit snooze", "panel_count": 9, "aliases": ["snooze", "snooze alarm", "go back to sleep", "sleep more"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason someone might be late for work.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Traffic", "panel_count": 33, "aliases": ["jam", "traffic jam", "stuck in traffic", "matatu", "the roads"] },
+            { "text": "They overslept", "panel_count": 27, "aliases": ["overslept", "oversleep", "slept in", "alarm didn't go off", "woke up late", "alarm"] },
+            { "text": "Bad weather", "panel_count": 11, "aliases": ["rain", "weather", "storm", "snow", "raining"] },
+            { "text": "The kids", "panel_count": 9, "aliases": ["kids", "children", "school run", "baby", "family"] },
+            { "text": "Car trouble", "panel_count": 7, "aliases": ["car", "flat tyre", "flat tire", "breakdown", "puncture", "car broke down"] }
+          ]
+        },
+        {
+          "prompt": "Name something people always lose inside their own house.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "The remote", "panel_count": 28, "aliases": ["remote", "tv remote", "remote control", "controller"] },
+            { "text": "Their phone", "panel_count": 21, "aliases": ["phone", "mobile", "cellphone"] },
+            { "text": "Keys", "panel_count": 19, "aliases": ["key", "house keys", "car keys"] },
+            { "text": "Socks", "panel_count": 12, "aliases": ["sock", "one sock", "matching socks"] },
+            { "text": "Glasses", "panel_count": 9, "aliases": ["specs", "spectacles", "reading glasses", "sunglasses"] }
+          ]
+        },
+        {
+          "prompt": "Name something people do while waiting in a long queue.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Scroll their phone", "panel_count": 42, "aliases": ["phone", "scroll", "social media", "tiktok", "check phone", "instagram"] },
+            { "text": "Complain", "panel_count": 14, "aliases": ["moan", "grumble", "complain about the wait", "sigh"] },
+            { "text": "Chat to someone", "panel_count": 12, "aliases": ["talk", "chat", "talk to strangers", "gossip"] },
+            { "text": "Listen to music", "panel_count": 9, "aliases": ["music", "headphones", "podcast", "earphones"] },
+            { "text": "Daydream", "panel_count": 7, "aliases": ["stare into space", "think", "zone out", "people watch"] }
+          ]
+        },
+        {
+          "prompt": "Name something you would grab first if your house was on fire.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Phone", "panel_count": 24, "aliases": ["cell", "cellphone", "mobile", "smartphone", "simu"] },
+            { "text": "Pets", "panel_count": 21, "aliases": ["pet", "dog", "cat", "dogs", "cats", "the animals"] },
+            { "text": "Documents", "panel_count": 17, "aliases": ["papers", "passport", "certificates", "title deed", "birth certificate", "id"] },
+            { "text": "Photos", "panel_count": 13, "aliases": ["photo", "pictures", "photo album", "family photos", "album"] },
+            { "text": "Laptop", "panel_count": 9, "aliases": ["computer", "pc", "macbook", "work laptop"] }
+          ]
+        },
+        {
+          "prompt": "Name a chore people put off as long as possible.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Washing the dishes", "panel_count": 24, "aliases": ["dishes", "washing up", "the washing up", "utensils"] },
+            { "text": "Laundry", "panel_count": 22, "aliases": ["washing clothes", "the washing", "clothes"] },
+            { "text": "Ironing", "panel_count": 14, "aliases": ["iron", "pressing clothes"] },
+            { "text": "Cleaning the bathroom", "panel_count": 13, "aliases": ["bathroom", "toilet", "cleaning the toilet", "scrubbing the bath"] },
+            { "text": "Taking out the rubbish", "panel_count": 8, "aliases": ["bins", "trash", "garbage", "taking out the trash", "rubbish"] }
+          ]
+        },
+        {
+          "prompt": "Name something people pretend to enjoy.",
+          "difficulty": "hard",
+          "answers": [
+            { "text": "The gym", "panel_count": 18, "aliases": ["gym", "exercise", "working out", "running"] },
+            { "text": "Someone else's cooking", "panel_count": 17, "aliases": ["bad cooking", "mum's cooking", "a friend's food", "the food"] },
+            { "text": "Meetings", "panel_count": 16, "aliases": ["meeting", "work meetings", "zoom calls"] },
+            { "text": "Small talk", "panel_count": 15, "aliases": ["chit chat", "chitchat", "making conversation", "networking"] },
+            { "text": "Birthday parties", "panel_count": 9, "aliases": ["parties", "party", "birthdays", "other people's parties"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "food",
+      "name": "Food & Drink",
+      "tagline": "Strong opinions, hot plates",
+      "icon": "bowl",
+      "accent": "#ff9f43",
+      "sort_order": 20,
+      "questions": [
+        {
+          "prompt": "Name a food people reach for when they are stressed.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Chocolate", "panel_count": 29, "aliases": ["chocolate bar", "cadbury", "sweets", "candy"] },
+            { "text": "Ice cream", "panel_count": 21, "aliases": ["icecream", "a tub of ice cream", "gelato"] },
+            { "text": "Crisps", "panel_count": 16, "aliases": ["chips", "potato chips", "packet of crisps", "crips"] },
+            { "text": "Pizza", "panel_count": 11, "aliases": ["a pizza", "takeaway pizza"] },
+            { "text": "Biscuits", "panel_count": 8, "aliases": ["cookies", "biscuit", "cookie"] }
+          ]
+        },
+        {
+          "prompt": "Name something you would find in a refrigerator.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Milk", "panel_count": 30, "aliases": ["maziwa", "mala", "fresh milk"] },
+            { "text": "Eggs", "panel_count": 22, "aliases": ["egg", "mayai"] },
+            { "text": "Leftovers", "panel_count": 13, "aliases": ["last night's food", "old food", "leftover"] },
+            { "text": "Vegetables", "panel_count": 11, "aliases": ["veggies", "veg", "sukuma", "sukuma wiki", "greens", "lettuce", "carrots", "tomatoes"] },
+            { "text": "Juice", "panel_count": 8, "aliases": ["orange juice", "juices", "squash"] }
+          ]
+        },
+        {
+          "prompt": "Name a pizza topping people argue about.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Pineapple", "panel_count": 46, "aliases": ["hawaiian", "pineapples", "pineapple on pizza"] },
+            { "text": "Anchovies", "panel_count": 15, "aliases": ["anchovy", "fish"] },
+            { "text": "Olives", "panel_count": 9, "aliases": ["olive", "black olives"] },
+            { "text": "Mushrooms", "panel_count": 8, "aliases": ["mushroom"] },
+            { "text": "Onions", "panel_count": 6, "aliases": ["onion", "red onion"] }
+          ]
+        },
+        {
+          "prompt": "Name a food that is impossible to eat politely.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Spaghetti", "panel_count": 24, "aliases": ["pasta", "noodles", "spagetti"] },
+            { "text": "A burger", "panel_count": 19, "aliases": ["burger", "hamburger", "big burger"] },
+            { "text": "Ribs", "panel_count": 16, "aliases": ["rib", "bbq ribs", "nyama choma"] },
+            { "text": "Mango", "panel_count": 11, "aliases": ["mangoes", "embe"] },
+            { "text": "Soup", "panel_count": 9, "aliases": ["hot soup", "broth"] }
+          ]
+        },
+        {
+          "prompt": "Name something people order at a restaurant that they could easily make at home.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Chips", "panel_count": 23, "aliases": ["fries", "french fries", "potato chips"] },
+            { "text": "Pizza", "panel_count": 18, "aliases": ["a pizza"] },
+            { "text": "Rice", "panel_count": 12, "aliases": ["plain rice", "fried rice", "wali"] },
+            { "text": "Eggs", "panel_count": 11, "aliases": ["omelette", "scrambled eggs", "fried eggs"] },
+            { "text": "Salad", "panel_count": 9, "aliases": ["side salad", "green salad", "kachumbari"] }
+          ]
+        },
+        {
+          "prompt": "Name a drink people have every single morning.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Tea", "panel_count": 32, "aliases": ["chai", "cup of tea", "black tea", "milk tea"] },
+            { "text": "Coffee", "panel_count": 31, "aliases": ["kahawa", "cup of coffee", "espresso", "instant coffee"] },
+            { "text": "Water", "panel_count": 16, "aliases": ["glass of water", "maji", "warm water"] },
+            { "text": "Juice", "panel_count": 7, "aliases": ["orange juice", "fruit juice"] },
+            { "text": "A smoothie", "panel_count": 4, "aliases": ["smoothie", "shake", "milkshake"] }
+          ]
+        },
+        {
+          "prompt": "Name a dish people say they love but almost never cook.",
+          "difficulty": "hard",
+          "answers": [
+            { "text": "Lasagne", "panel_count": 17, "aliases": ["lasagna", "pasta bake"] },
+            { "text": "Biryani", "panel_count": 14, "aliases": ["pilau", "pilaf"] },
+            { "text": "Roast chicken", "panel_count": 13, "aliases": ["roast", "sunday roast", "whole chicken"] },
+            { "text": "Samosas", "panel_count": 12, "aliases": ["samosa", "sambusa"] },
+            { "text": "Curry", "panel_count": 11, "aliases": ["a curry", "chicken curry", "thai curry"] }
+          ]
+        },
+        {
+          "prompt": "Name something people put on absolutely everything.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Salt", "panel_count": 26, "aliases": ["chumvi", "table salt"] },
+            { "text": "Ketchup", "panel_count": 21, "aliases": ["tomato sauce", "tomato ketchup", "sauce"] },
+            { "text": "Chilli sauce", "panel_count": 17, "aliases": ["hot sauce", "pili pili", "chili", "chilli", "peri peri"] },
+            { "text": "Mayonnaise", "panel_count": 10, "aliases": ["mayo"] },
+            { "text": "Cheese", "panel_count": 9, "aliases": ["grated cheese", "cheddar"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "screen",
+      "name": "Movies & TV",
+      "tagline": "Everything you half-watched",
+      "icon": "film",
+      "accent": "#2fd6ff",
+      "sort_order": 30,
+      "questions": [
+        {
+          "prompt": "Name something people do while watching a scary film.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Cover their eyes", "panel_count": 31, "aliases": ["cover eyes", "hide eyes", "look away", "close eyes", "hands over face"] },
+            { "text": "Scream", "panel_count": 20, "aliases": ["shout", "yell", "jump and scream"] },
+            { "text": "Hide behind a cushion", "panel_count": 14, "aliases": ["cushion", "pillow", "hide behind pillow", "blanket"] },
+            { "text": "Check their phone", "panel_count": 10, "aliases": ["phone", "scroll", "look at phone"] },
+            { "text": "Laugh", "panel_count": 8, "aliases": ["nervous laugh", "laughing", "giggle"] }
+          ]
+        },
+        {
+          "prompt": "Name a film everyone claims to have seen.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Titanic", "panel_count": 24, "aliases": ["the titanic"] },
+            { "text": "The Godfather", "panel_count": 19, "aliases": ["godfather"] },
+            { "text": "Star Wars", "panel_count": 14, "aliases": ["starwars", "a new hope"] },
+            { "text": "Avatar", "panel_count": 11, "aliases": ["the avatar"] },
+            { "text": "The Lion King", "panel_count": 9, "aliases": ["lion king", "simba"] }
+          ]
+        },
+        {
+          "prompt": "Name something that always happens in a horror film.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Someone splits off from the group", "panel_count": 27, "aliases": ["they split up", "goes alone", "separates", "splits up", "investigates alone"] },
+            { "text": "The power goes out", "panel_count": 21, "aliases": ["lights go out", "blackout", "power cut", "electricity goes"] },
+            { "text": "Nobody has phone signal", "panel_count": 18, "aliases": ["no signal", "phone dies", "no reception", "no network"] },
+            { "text": "The car won't start", "panel_count": 12, "aliases": ["car won't start", "car fails", "engine won't start"] },
+            { "text": "Someone trips while running", "panel_count": 9, "aliases": ["trips", "falls over", "stumbles", "falls while running"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason someone walks out of a cinema.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "The film is boring", "panel_count": 28, "aliases": ["boring", "bad film", "terrible movie", "not enjoying it"] },
+            { "text": "It is too loud", "panel_count": 15, "aliases": ["too loud", "volume", "loud sound"] },
+            { "text": "Someone is talking", "panel_count": 14, "aliases": ["talking", "noisy people", "chatter"] },
+            { "text": "They feel ill", "panel_count": 11, "aliases": ["feeling sick", "sick", "headache", "unwell"] },
+            { "text": "They need the toilet", "panel_count": 9, "aliases": ["toilet", "bathroom", "loo", "wee"] }
+          ]
+        },
+        {
+          "prompt": "Name something people do during the end credits.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Leave", "panel_count": 38, "aliases": ["walk out", "go home", "get up and leave", "exit"] },
+            { "text": "Check their phone", "panel_count": 18, "aliases": ["phone", "scroll", "turn phone on"] },
+            { "text": "Wait for the extra scene", "panel_count": 17, "aliases": ["post credit scene", "end credit scene", "marvel scene", "stay for the scene", "wait"] },
+            { "text": "Stretch", "panel_count": 8, "aliases": ["stand up and stretch", "yawn"] },
+            { "text": "Talk about the film", "panel_count": 7, "aliases": ["discuss the movie", "review it", "talk about it"] }
+          ]
+        },
+        {
+          "prompt": "Name a TV series people finish in a single weekend.",
+          "difficulty": "hard",
+          "answers": [
+            { "text": "Stranger Things", "panel_count": 18, "aliases": ["stranger thing"] },
+            { "text": "Squid Game", "panel_count": 17, "aliases": ["squidgame"] },
+            { "text": "Breaking Bad", "panel_count": 14, "aliases": ["breakingbad"] },
+            { "text": "Friends", "panel_count": 12, "aliases": ["the friends"] },
+            { "text": "Game of Thrones", "panel_count": 10, "aliases": ["got", "thrones"] }
+          ]
+        },
+        {
+          "prompt": "Name something a film villain always says.",
+          "difficulty": "hard",
+          "answers": [
+            { "text": "You can't stop me", "panel_count": 22, "aliases": ["you cannot stop me", "nobody can stop me", "it's too late"] },
+            { "text": "We're not so different, you and I", "panel_count": 19, "aliases": ["we are not so different", "we're alike", "you and i are the same"] },
+            { "text": "Kill them", "panel_count": 14, "aliases": ["kill him", "destroy them", "finish them"] },
+            { "text": "I've been expecting you", "panel_count": 13, "aliases": ["i have been expecting you", "i knew you'd come"] },
+            { "text": "Any last words?", "panel_count": 9, "aliases": ["last words", "any final words"] }
+          ]
+        },
+        {
+          "prompt": "Name something people do in a cinema that drives everyone mad.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Talk", "panel_count": 34, "aliases": ["talking", "chatting", "commentating", "explaining the plot"] },
+            { "text": "Use their phone", "panel_count": 24, "aliases": ["phone", "bright screen", "texting", "filming"] },
+            { "text": "Eat loudly", "panel_count": 15, "aliases": ["crunching", "noisy eating", "popcorn noise", "rustling"] },
+            { "text": "Kick the seat", "panel_count": 12, "aliases": ["kicking seats", "seat kicking", "knee in the back"] },
+            { "text": "Arrive late", "panel_count": 7, "aliases": ["come late", "walk in late", "turn up late"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "music",
+      "name": "Music",
+      "tagline": "Loud, wrong and proud",
+      "icon": "music",
+      "accent": "#ff4fa3",
+      "sort_order": 40,
+      "questions": [
+        {
+          "prompt": "Name something people do when their favourite song comes on.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Sing along", "panel_count": 35, "aliases": ["sing", "singing", "shout the lyrics", "sing loudly"] },
+            { "text": "Turn it up", "panel_count": 26, "aliases": ["volume up", "turn up the volume", "make it louder", "crank it"] },
+            { "text": "Dance", "panel_count": 19, "aliases": ["dancing", "start dancing", "move"] },
+            { "text": "Close their eyes", "panel_count": 6, "aliases": ["close eyes", "eyes closed", "feel it"] },
+            { "text": "Text a friend about it", "panel_count": 4, "aliases": ["tell a friend", "send it to someone", "share it"] }
+          ]
+        },
+        {
+          "prompt": "Name a place people sing where nobody can hear them.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "The shower", "panel_count": 48, "aliases": ["shower", "bathroom", "in the shower", "bath"] },
+            { "text": "The car", "panel_count": 24, "aliases": ["car", "in the car", "driving", "behind the wheel"] },
+            { "text": "The kitchen", "panel_count": 8, "aliases": ["kitchen", "while cooking", "cooking"] },
+            { "text": "Their bedroom", "panel_count": 7, "aliases": ["bedroom", "my room", "in bed"] },
+            { "text": "On a walk with headphones", "panel_count": 5, "aliases": ["walking", "with headphones", "on a walk", "in the street"] }
+          ]
+        },
+        {
+          "prompt": "Name a song where everyone knows the chorus but nobody knows the verses.",
+          "difficulty": "hard",
+          "answers": [
+            { "text": "Bohemian Rhapsody", "panel_count": 21, "aliases": ["bohemian rapsody", "queen", "galileo"] },
+            { "text": "Despacito", "panel_count": 15, "aliases": ["despasito"] },
+            { "text": "Shape of You", "panel_count": 13, "aliases": ["shape of u", "ed sheeran"] },
+            { "text": "Jerusalema", "panel_count": 12, "aliases": ["jerusalem a", "master kg"] },
+            { "text": "Happy Birthday", "panel_count": 10, "aliases": ["happy birthday to you", "the birthday song"] }
+          ]
+        },
+        {
+          "prompt": "Name something that ruins a live concert.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "A tall person in front of you", "panel_count": 23, "aliases": ["tall person", "someone blocking the view", "can't see", "tall guy"] },
+            { "text": "Bad sound", "panel_count": 19, "aliases": ["sound quality", "poor sound", "bad acoustics", "muffled sound"] },
+            { "text": "People filming the whole thing", "panel_count": 18, "aliases": ["phones up", "filming", "recording", "phones in the air"] },
+            { "text": "Rain", "panel_count": 11, "aliases": ["bad weather", "wet", "mud"] },
+            { "text": "Long queues", "panel_count": 9, "aliases": ["queues", "waiting in line", "bar queue", "toilet queue"] }
+          ]
+        },
+        {
+          "prompt": "Name an instrument people wish they had learned.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Piano", "panel_count": 34, "aliases": ["keyboard", "the piano", "keys"] },
+            { "text": "Guitar", "panel_count": 29, "aliases": ["the guitar", "acoustic guitar", "electric guitar"] },
+            { "text": "Drums", "panel_count": 11, "aliases": ["drum", "drum kit", "the drums"] },
+            { "text": "Violin", "panel_count": 10, "aliases": ["the violin", "fiddle"] },
+            { "text": "Saxophone", "panel_count": 6, "aliases": ["sax", "the sax"] }
+          ]
+        },
+        {
+          "prompt": "Name something people do badly but confidently at karaoke.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Hit the high notes", "panel_count": 31, "aliases": ["high notes", "the high note", "whitney notes", "screaming the high bit"] },
+            { "text": "Rap", "panel_count": 19, "aliases": ["rapping", "the rap part", "fast rap"] },
+            { "text": "Dance", "panel_count": 15, "aliases": ["dancing", "moves", "dance moves"] },
+            { "text": "Hold the microphone", "panel_count": 12, "aliases": ["mic", "microphone", "holding the mic", "mic technique"] },
+            { "text": "Pick the song", "panel_count": 8, "aliases": ["song choice", "choosing a song", "pick a long song"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason someone skips a song.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "They have heard it too many times", "panel_count": 28, "aliases": ["overplayed", "heard it too much", "bored of it", "too familiar", "played out"] },
+            { "text": "Not in the mood", "panel_count": 22, "aliases": ["wrong mood", "doesn't fit the mood", "not feeling it"] },
+            { "text": "It reminds them of someone", "panel_count": 16, "aliases": ["sad memory", "reminds me of an ex", "bad memories", "too emotional"] },
+            { "text": "It is too slow", "panel_count": 12, "aliases": ["slow", "boring", "low energy"] },
+            { "text": "They don't know it", "panel_count": 9, "aliases": ["never heard it", "unfamiliar", "don't know the song"] }
+          ]
+        },
+        {
+          "prompt": "Name a kind of music people put on a workout playlist.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Afrobeats", "panel_count": 21, "aliases": ["afrobeat", "afro beats", "african music"] },
+            { "text": "Hip hop", "panel_count": 20, "aliases": ["rap", "hiphop", "hip-hop"] },
+            { "text": "Amapiano", "panel_count": 16, "aliases": ["piano", "ama piano"] },
+            { "text": "Rock", "panel_count": 13, "aliases": ["heavy metal", "metal", "rock music"] },
+            { "text": "Pop", "panel_count": 11, "aliases": ["pop music", "chart music"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "football",
+      "name": "Football",
+      "tagline": "Ninety minutes of opinions",
+      "icon": "ball",
+      "accent": "#3be38b",
+      "sort_order": 50,
+      "questions": [
+        {
+          "prompt": "Name something fans shout at the referee.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Are you blind?", "panel_count": 32, "aliases": ["are you blind", "open your eyes", "blind ref", "ref you're blind"] },
+            { "text": "That's a foul!", "panel_count": 24, "aliases": ["thats a foul", "foul", "that was a foul", "free kick"] },
+            { "text": "Off! Send him off!", "panel_count": 13, "aliases": ["send him off", "red card", "off off off", "card him"] },
+            { "text": "Check VAR!", "panel_count": 12, "aliases": ["var", "check the var", "go to the screen"] },
+            { "text": "Cheat!", "panel_count": 9, "aliases": ["cheater", "you're bought", "corrupt ref"] }
+          ]
+        },
+        {
+          "prompt": "Name an excuse fans give when their team loses.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "The referee", "panel_count": 31, "aliases": ["ref", "bad refereeing", "the ref cost us", "referee decisions"] },
+            { "text": "Injuries", "panel_count": 21, "aliases": ["injured players", "too many injuries", "our best player was out"] },
+            { "text": "The pitch was bad", "panel_count": 12, "aliases": ["bad pitch", "the pitch", "poor playing surface"] },
+            { "text": "VAR", "panel_count": 12, "aliases": ["var decision", "var robbed us"] },
+            { "text": "We were unlucky", "panel_count": 10, "aliases": ["unlucky", "bad luck", "hit the post"] }
+          ]
+        },
+        {
+          "prompt": "Name something people do the moment their team scores.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Jump up", "panel_count": 34, "aliases": ["jump", "leap up", "stand up", "jump out of the seat"] },
+            { "text": "Scream", "panel_count": 24, "aliases": ["shout", "yell", "roar", "celebrate loudly"] },
+            { "text": "Hug a stranger", "panel_count": 16, "aliases": ["hug someone", "hug strangers", "grab the person next to you"] },
+            { "text": "Run around", "panel_count": 10, "aliases": ["run", "run about", "sprint around the room"] },
+            { "text": "Spill their drink", "panel_count": 7, "aliases": ["spill drink", "throw the drink", "knock over the drink"] }
+          ]
+        },
+        {
+          "prompt": "Name something a football commentator always says.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "What a goal!", "panel_count": 26, "aliases": ["what a goal", "oh what a goal", "goal of the season"] },
+            { "text": "He's done well there", "panel_count": 17, "aliases": ["hes done well", "he's done well", "good work there"] },
+            { "text": "Against the run of play", "panel_count": 15, "aliases": ["against the run of play", "completely against the run of play"] },
+            { "text": "It's a game of two halves", "panel_count": 14, "aliases": ["game of two halves", "two halves"] },
+            { "text": "Unbelievable!", "panel_count": 11, "aliases": ["unbelievable", "absolutely unbelievable", "incredible"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason a player misses a penalty.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Nerves", "panel_count": 33, "aliases": ["nervous", "pressure", "bottled it", "the pressure"] },
+            { "text": "Poor technique", "panel_count": 19, "aliases": ["bad technique", "bad kick", "scuffed it", "poor strike"] },
+            { "text": "The keeper guessed right", "panel_count": 18, "aliases": ["goalkeeper saved it", "keeper saved it", "good save", "keeper guessed"] },
+            { "text": "They slipped", "panel_count": 12, "aliases": ["slipped", "slip", "lost their footing"] },
+            { "text": "Crowd noise", "panel_count": 7, "aliases": ["the crowd", "fans distracted him", "booing"] }
+          ]
+        },
+        {
+          "prompt": "Name something fans wear to a match.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "A jersey", "panel_count": 46, "aliases": ["jersey", "shirt", "kit", "team shirt", "football shirt"] },
+            { "text": "A scarf", "panel_count": 18, "aliases": ["scarf", "team scarf"] },
+            { "text": "Face paint", "panel_count": 12, "aliases": ["painted face", "paint", "team colours on their face"] },
+            { "text": "A hat", "panel_count": 10, "aliases": ["cap", "beanie", "bobble hat"] },
+            { "text": "A flag", "panel_count": 6, "aliases": ["flag", "banner", "team flag"] }
+          ]
+        },
+        {
+          "prompt": "Name something that can stop a football match.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Heavy rain", "panel_count": 22, "aliases": ["rain", "weather", "waterlogged pitch", "storm"] },
+            { "text": "A serious injury", "panel_count": 21, "aliases": ["injury", "injured player", "someone gets hurt"] },
+            { "text": "Floodlight failure", "panel_count": 15, "aliases": ["floodlights", "lights go out", "power cut", "no lights"] },
+            { "text": "A pitch invasion", "panel_count": 14, "aliases": ["pitch invasion", "fan runs on", "someone on the pitch", "streaker"] },
+            { "text": "A fight", "panel_count": 11, "aliases": ["brawl", "fighting", "players fighting", "crowd trouble"] }
+          ]
+        },
+        {
+          "prompt": "Name a footballer every child pretends to be.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Messi", "panel_count": 29, "aliases": ["lionel messi", "leo messi"] },
+            { "text": "Ronaldo", "panel_count": 28, "aliases": ["cristiano", "cristiano ronaldo", "cr7"] },
+            { "text": "Neymar", "panel_count": 11, "aliases": ["neymar jr"] },
+            { "text": "Mbappe", "panel_count": 11, "aliases": ["mbappé", "kylian mbappe"] },
+            { "text": "Haaland", "panel_count": 8, "aliases": ["erling haaland"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kenya",
+      "name": "Kenya",
+      "tagline": "Home ground advantage",
+      "icon": "flag",
+      "accent": "#ff7a2f",
+      "sort_order": 60,
+      "questions": [
+        {
+          "prompt": "Name something you always see on a matatu.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Loud music", "panel_count": 33, "aliases": ["music", "loud speakers", "blasting music", "a sound system", "ngoma"] },
+            { "text": "Graffiti art", "panel_count": 24, "aliases": ["graffiti", "art", "paintings", "stickers", "decorations"] },
+            { "text": "Too many passengers", "panel_count": 15, "aliases": ["overloading", "squeezed passengers", "crowded", "overloaded"] },
+            { "text": "A conductor hanging out of the door", "panel_count": 14, "aliases": ["conductor", "makanga", "tout", "manamba"] },
+            { "text": "TV screens", "panel_count": 7, "aliases": ["screens", "tv", "videos", "music videos"] }
+          ]
+        },
+        {
+          "prompt": "Name something that happens at every Kenyan family gathering.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Nyama choma", "panel_count": 28, "aliases": ["roast meat", "choma", "meat", "barbecue", "goat meat"] },
+            { "text": "An argument about politics", "panel_count": 19, "aliases": ["politics", "political argument", "arguing about politics", "debate"] },
+            { "text": "Taking photos", "panel_count": 15, "aliases": ["photos", "pictures", "group photo", "selfies"] },
+            { "text": "A contribution", "panel_count": 14, "aliases": ["harambee", "contributing money", "fundraising", "collecting money", "mchango"] },
+            { "text": "Singing", "panel_count": 8, "aliases": ["songs", "hymns", "praise and worship", "singing together"] }
+          ]
+        },
+        {
+          "prompt": "Name a Kenyan food everyone has an opinion about.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Ugali", "panel_count": 31, "aliases": ["ugali na sukuma", "sima"] },
+            { "text": "Githeri", "panel_count": 19, "aliases": ["githeri", "maize and beans"] },
+            { "text": "Matoke", "panel_count": 14, "aliases": ["matooke", "green bananas", "plantain"] },
+            { "text": "Mukimo", "panel_count": 13, "aliases": ["irio", "mashed potatoes and peas"] },
+            { "text": "Omena", "panel_count": 11, "aliases": ["small fish", "dagaa", "silver fish"] }
+          ]
+        },
+        {
+          "prompt": "Name something people complain about in Nairobi.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Traffic", "panel_count": 38, "aliases": ["jam", "traffic jam", "the traffic", "gridlock"] },
+            { "text": "Rent", "panel_count": 19, "aliases": ["high rent", "cost of housing", "landlords"] },
+            { "text": "Dust", "panel_count": 12, "aliases": ["dusty", "the dust", "pollution"] },
+            { "text": "Potholes", "panel_count": 12, "aliases": ["pothole", "bad roads", "the roads"] },
+            { "text": "Boda bodas", "panel_count": 10, "aliases": ["boda", "bodaboda", "motorbikes", "motorcycles"] }
+          ]
+        },
+        {
+          "prompt": "Name something people bring back from upcountry.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Vegetables", "panel_count": 26, "aliases": ["sukuma", "greens", "mboga", "kales", "fresh vegetables"] },
+            { "text": "Maize", "panel_count": 21, "aliases": ["mahindi", "corn", "a sack of maize", "flour"] },
+            { "text": "A chicken", "panel_count": 18, "aliases": ["chicken", "kuku", "live chicken", "kienyeji chicken"] },
+            { "text": "Bananas", "panel_count": 12, "aliases": ["ndizi", "a bunch of bananas", "matoke"] },
+            { "text": "Firewood", "panel_count": 7, "aliases": ["wood", "kuni", "charcoal"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason someone says they are on the way when they have not left.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Traffic", "panel_count": 29, "aliases": ["jam", "there's traffic", "stuck in traffic"] },
+            { "text": "They forgot", "panel_count": 21, "aliases": ["forgot", "i forgot", "slipped my mind"] },
+            { "text": "They are too tired", "panel_count": 17, "aliases": ["tired", "exhausted", "can't be bothered", "too lazy"] },
+            { "text": "No money for fare", "panel_count": 16, "aliases": ["no money", "broke", "no fare", "no cash"] },
+            { "text": "Better plans came up", "panel_count": 9, "aliases": ["better offer", "other plans", "something came up"] }
+          ]
+        },
+        {
+          "prompt": "Name something sold at the roadside.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Fruit", "panel_count": 31, "aliases": ["fruits", "mangoes", "bananas", "avocado", "oranges"] },
+            { "text": "Roasted maize", "panel_count": 25, "aliases": ["maize", "roast maize", "mahindi choma", "corn"] },
+            { "text": "Airtime", "panel_count": 14, "aliases": ["credit", "scratch cards", "phone credit", "mpesa"] },
+            { "text": "Water", "panel_count": 12, "aliases": ["bottled water", "drinks", "sodas"] },
+            { "text": "Shoes", "panel_count": 8, "aliases": ["second hand shoes", "sandals", "mitumba"] }
+          ]
+        },
+        {
+          "prompt": "Name something found in almost every Kenyan household.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "A thermos flask", "panel_count": 27, "aliases": ["thermos", "flask", "hot water flask", "chai flask"] },
+            { "text": "A sufuria", "panel_count": 23, "aliases": ["sufuria", "cooking pot", "pot", "pots"] },
+            { "text": "Plastic chairs", "panel_count": 17, "aliases": ["plastic chair", "white chairs", "stackable chairs"] },
+            { "text": "A radio", "panel_count": 12, "aliases": ["radio", "stereo", "the radio"] },
+            { "text": "A jerry can", "panel_count": 10, "aliases": ["jerrycan", "water container", "20 litre can", "mtungi"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tech",
+      "name": "Technology",
+      "tagline": "Have you tried turning it off?",
+      "icon": "chip",
+      "accent": "#6c7bff",
+      "sort_order": 70,
+      "questions": [
+        {
+          "prompt": "Name something people do instead of reading the terms and conditions.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Scroll straight to the bottom", "panel_count": 44, "aliases": ["scroll to the bottom", "scroll down", "skip to the end", "scroll past"] },
+            { "text": "Tick the box", "panel_count": 28, "aliases": ["accept", "click agree", "tick accept", "press i agree", "check the box"] },
+            { "text": "Ignore it completely", "panel_count": 13, "aliases": ["ignore", "don't read", "never read it"] },
+            { "text": "Skim it", "panel_count": 8, "aliases": ["skim read", "glance at it", "quick look"] },
+            { "text": "Close the tab", "panel_count": 4, "aliases": ["close it", "leave the page", "give up"] }
+          ]
+        },
+        {
+          "prompt": "Name a password people actually use.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Their own name", "panel_count": 24, "aliases": ["name", "my name", "their name", "surname"] },
+            { "text": "A birthday", "panel_count": 22, "aliases": ["birthday", "date of birth", "dob", "birth year"] },
+            { "text": "password", "panel_count": 17, "aliases": ["the word password", "password123", "passw0rd"] },
+            { "text": "123456", "panel_count": 16, "aliases": ["123", "1234", "12345", "numbers in order", "123456789"] },
+            { "text": "A pet's name", "panel_count": 11, "aliases": ["pet name", "dog's name", "cat's name", "my dog"] }
+          ]
+        },
+        {
+          "prompt": "Name something that happens the moment the Wi-Fi goes down.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Everyone complains at once", "panel_count": 29, "aliases": ["complaining", "shouting", "everyone shouts", "chaos", "panic"] },
+            { "text": "Someone restarts the router", "panel_count": 27, "aliases": ["restart the router", "reboot router", "unplug the router", "turn it off and on", "reset"] },
+            { "text": "Blame the provider", "panel_count": 15, "aliases": ["blame safaricom", "blame the isp", "call the provider", "complain to the company"] },
+            { "text": "Switch to mobile data", "panel_count": 14, "aliases": ["mobile data", "use data", "hotspot", "bundles"] },
+            { "text": "Go outside", "panel_count": 6, "aliases": ["go out", "touch grass", "do something else"] }
+          ]
+        },
+        {
+          "prompt": "Name something people never delete from their phone.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Photos", "panel_count": 36, "aliases": ["pictures", "images", "camera roll", "old photos"] },
+            { "text": "Contacts", "panel_count": 18, "aliases": ["phone numbers", "numbers", "contact list"] },
+            { "text": "WhatsApp chats", "panel_count": 17, "aliases": ["whatsapp", "chats", "messages", "old messages", "texts"] },
+            { "text": "Apps they never open", "panel_count": 11, "aliases": ["old apps", "unused apps", "apps"] },
+            { "text": "Voice notes", "panel_count": 7, "aliases": ["voice note", "audio messages", "recordings"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason someone's phone battery is always dying.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Too much scrolling", "panel_count": 31, "aliases": ["social media", "scrolling", "tiktok", "instagram", "on the phone all day"] },
+            { "text": "Watching videos", "panel_count": 20, "aliases": ["youtube", "videos", "netflix", "streaming"] },
+            { "text": "The battery is old", "panel_count": 17, "aliases": ["old battery", "old phone", "worn battery", "battery health"] },
+            { "text": "They forgot to charge it", "panel_count": 16, "aliases": ["forgot to charge", "didn't charge", "no charge overnight"] },
+            { "text": "Gaming", "panel_count": 8, "aliases": ["games", "playing games", "mobile games"] }
+          ]
+        },
+        {
+          "prompt": "Name something people say when technology fails.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Have you tried turning it off and on?", "panel_count": 33, "aliases": ["turn it off and on", "restart it", "reboot it", "have you restarted it", "switch it off and on"] },
+            { "text": "It worked yesterday", "panel_count": 21, "aliases": ["it was working yesterday", "it worked fine before", "it was fine yesterday"] },
+            { "text": "It's not my fault", "panel_count": 14, "aliases": ["not my fault", "wasn't me", "don't blame me"] },
+            { "text": "I didn't touch anything", "panel_count": 14, "aliases": ["i didn't do anything", "i changed nothing", "it just broke"] },
+            { "text": "Call IT", "panel_count": 10, "aliases": ["it support", "call support", "get the it guy", "tech support"] }
+          ]
+        },
+        {
+          "prompt": "Name something people pay for every month and never use.",
+          "difficulty": "hard",
+          "answers": [
+            { "text": "A gym membership", "panel_count": 21, "aliases": ["gym", "gym subscription", "fitness app"] },
+            { "text": "An online course", "panel_count": 20, "aliases": ["course", "udemy", "coursera", "learning subscription"] },
+            { "text": "A smart watch they stopped wearing", "panel_count": 16, "aliases": ["smart watch", "fitbit", "apple watch", "fitness tracker"] },
+            { "text": "A streaming service", "panel_count": 15, "aliases": ["netflix", "showmax", "spotify", "subscription", "streaming"] },
+            { "text": "A tablet", "panel_count": 11, "aliases": ["ipad", "the tablet"] }
+          ]
+        },
+        {
+          "prompt": "Name something that makes a video call awkward.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "A bad connection", "panel_count": 29, "aliases": ["bad internet", "freezing", "lag", "poor connection", "buffering", "frozen screen"] },
+            { "text": "Everyone talking at once", "panel_count": 22, "aliases": ["talking over each other", "interrupting", "speaking at the same time"] },
+            { "text": "Forgetting to unmute", "panel_count": 19, "aliases": ["muted", "you're on mute", "forgot to unmute", "mute"] },
+            { "text": "Background noise", "panel_count": 13, "aliases": ["noise", "kids in the background", "dog barking", "noisy background"] },
+            { "text": "A terrible camera angle", "panel_count": 10, "aliases": ["camera angle", "bad angle", "up the nose", "ceiling shot"] }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "growingup",
+      "name": "Growing Up",
+      "tagline": "Things you would never do now",
+      "icon": "kite",
+      "accent": "#ffc940",
+      "sort_order": 80,
+      "questions": [
+        {
+          "prompt": "Name something children say when they do not want to go to bed.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "I'm not tired", "panel_count": 34, "aliases": ["im not tired", "i am not tired", "not sleepy", "i'm not sleepy"] },
+            { "text": "I need water", "panel_count": 24, "aliases": ["i want water", "i'm thirsty", "can i have water", "thirsty"] },
+            { "text": "One more episode", "panel_count": 15, "aliases": ["one more", "five more minutes", "just one more", "another episode"] },
+            { "text": "I'm scared", "panel_count": 12, "aliases": ["im scared", "there's a monster", "i'm afraid", "scared of the dark"] },
+            { "text": "I need the toilet", "panel_count": 9, "aliases": ["toilet", "i need a wee", "bathroom", "loo"] }
+          ]
+        },
+        {
+          "prompt": "Name something every child breaks.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "A glass", "panel_count": 26, "aliases": ["glass", "cup", "a plate", "crockery", "dishes"] },
+            { "text": "A phone", "panel_count": 21, "aliases": ["phone", "a screen", "mum's phone", "tablet"] },
+            { "text": "A toy", "panel_count": 19, "aliases": ["toys", "their toy", "a new toy"] },
+            { "text": "A window", "panel_count": 13, "aliases": ["window", "windows", "glass window"] },
+            { "text": "The remote", "panel_count": 9, "aliases": ["remote", "remote control", "tv remote"] }
+          ]
+        },
+        {
+          "prompt": "Name a lie parents tell their children.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "The shop is closed", "panel_count": 23, "aliases": ["shop is closed", "the shop's shut", "they're closed", "no sweets today"] },
+            { "text": "Santa is watching", "panel_count": 20, "aliases": ["santa", "father christmas is watching", "santa won't come"] },
+            { "text": "It's medicine, it tastes nice", "panel_count": 17, "aliases": ["medicine tastes nice", "it's sweet", "it won't taste bad"] },
+            { "text": "We're almost there", "panel_count": 16, "aliases": ["almost there", "nearly there", "five more minutes"] },
+            { "text": "That music means the ice cream van is out of ice cream", "panel_count": 10, "aliases": ["ice cream van is out", "the van has no ice cream", "ice cream van music"] }
+          ]
+        },
+        {
+          "prompt": "Name something children pretend to be.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "A superhero", "panel_count": 31, "aliases": ["superhero", "spiderman", "batman", "superman", "super hero"] },
+            { "text": "A doctor", "panel_count": 19, "aliases": ["doctor", "nurse", "vet"] },
+            { "text": "A teacher", "panel_count": 16, "aliases": ["teacher", "a school teacher"] },
+            { "text": "A driver", "panel_count": 13, "aliases": ["driver", "bus driver", "pilot", "matatu driver", "race car driver"] },
+            { "text": "A footballer", "panel_count": 12, "aliases": ["footballer", "football player", "soccer player"] }
+          ]
+        },
+        {
+          "prompt": "Name a reason a child cries in a supermarket.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "They were told no sweets", "panel_count": 38, "aliases": ["no sweets", "denied sweets", "can't have chocolate", "refused sweets", "no candy"] },
+            { "text": "They are tired", "panel_count": 19, "aliases": ["tired", "sleepy", "needs a nap"] },
+            { "text": "They lost sight of their parent", "panel_count": 15, "aliases": ["lost", "can't find mum", "lost their parent", "separated"] },
+            { "text": "They want a toy", "panel_count": 15, "aliases": ["wants a toy", "toy", "refused a toy"] },
+            { "text": "They are bored", "panel_count": 7, "aliases": ["bored", "boredom", "fed up"] }
+          ]
+        },
+        {
+          "prompt": "Name something people did as children that they would never do now.",
+          "difficulty": "medium",
+          "answers": [
+            { "text": "Eat food off the ground", "panel_count": 24, "aliases": ["eat off the floor", "five second rule", "eat anything", "food from the ground"] },
+            { "text": "Climb trees", "panel_count": 22, "aliases": ["climb a tree", "tree climbing", "climbing"] },
+            { "text": "Talk to strangers", "panel_count": 17, "aliases": ["speak to strangers", "trust strangers", "talking to anyone"] },
+            { "text": "Stay out until dark", "panel_count": 16, "aliases": ["play outside till dark", "out till night", "come home when it's dark", "play outside all day"] },
+            { "text": "Ride without a helmet", "panel_count": 9, "aliases": ["no helmet", "cycle without a helmet", "bike with no helmet"] }
+          ]
+        },
+        {
+          "prompt": "Name something found in every school bag.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Books", "panel_count": 28, "aliases": ["book", "textbooks", "exercise books", "notebooks"] },
+            { "text": "Pens", "panel_count": 23, "aliases": ["pen", "pencils", "pencil", "stationery", "biro"] },
+            { "text": "A lunchbox", "panel_count": 17, "aliases": ["lunch", "lunch box", "packed lunch", "snacks", "food"] },
+            { "text": "Crumbs", "panel_count": 13, "aliases": ["crumb", "old food", "biscuit crumbs", "rubbish"] },
+            { "text": "A crumpled letter from school", "panel_count": 10, "aliases": ["a letter", "note from the teacher", "crumpled paper", "old homework"] }
+          ]
+        },
+        {
+          "prompt": "Name something a teacher always says.",
+          "difficulty": "easy",
+          "answers": [
+            { "text": "Quiet please", "panel_count": 31, "aliases": ["be quiet", "silence", "settle down", "keep quiet", "shush"] },
+            { "text": "Pay attention", "panel_count": 20, "aliases": ["listen", "concentrate", "focus", "eyes on me"] },
+            { "text": "Is that a phone?", "panel_count": 15, "aliases": ["put your phone away", "phones away", "no phones"] },
+            { "text": "We'll wait", "panel_count": 14, "aliases": ["i'll wait", "we will wait", "i'm waiting"] },
+            { "text": "Do your homework", "panel_count": 12, "aliases": ["homework", "hand in your homework", "where's your homework"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

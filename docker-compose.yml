@@ -1,0 +1,144 @@
+name: ontheboard
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ontheboard}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ontheboard}
+      POSTGRES_DB: ${POSTGRES_DB:-ontheboard}
+      # Deterministic collation so ORDER BY is stable across platforms.
+      POSTGRES_INITDB_ARGS: "--locale=C --encoding=UTF8"
+    ports:
+      - "${POSTGRES_PORT:-15432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ontheboard} -d ${POSTGRES_DB:-ontheboard}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  qdrant:
+    image: qdrant/qdrant:v1.15.1
+    restart: unless-stopped
+    environment:
+      QDRANT__SERVICE__GRPC_PORT: 6334
+      QDRANT__LOG_LEVEL: WARN
+    ports:
+      - "${QDRANT_PORT:-16333}:6333"
+      - "${QDRANT_GRPC_PORT:-16334}:6334"
+    volumes:
+      - qdrant-data:/qdrant/storage
+
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      HTTP_ADDR: ":8080"
+      DATABASE_URL: postgres://${POSTGRES_USER:-ontheboard}:${POSTGRES_PASSWORD:-ontheboard}@postgres:5432/${POSTGRES_DB:-ontheboard}?sslmode=disable
+      JWT_SECRET: ${JWT_SECRET:-dev-only-secret-change-me-0123456789abcdef}
+      ACCESS_TOKEN_TTL: ${ACCESS_TOKEN_TTL:-15m}
+      REFRESH_TOKEN_TTL: ${REFRESH_TOKEN_TTL:-720h}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5174,http://localhost:5199,http://localhost:8088}
+      AI_SERVICE_URL: http://ai:8000
+      AI_SERVICE_TOKEN: ${AI_SERVICE_TOKEN:-dev-internal-token}
+      RUN_MIGRATIONS: ${RUN_MIGRATIONS:-true}
+      SEED_ON_START: ${SEED_ON_START:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      # Testing only: 4 runs the whole show four times faster. Leave unset to play.
+      LIVE_SPEED: ${LIVE_SPEED:-}
+      # The host's voice (ElevenLabs). Only this service ever sees the key; browsers
+      # ask the API for a line and get audio back. Blank means the browser's voice.
+      ELEVENLABS_API_KEY: ${ELEVENLABS_API_KEY:-${ELEVEN_LABS_SECRET_KEY:-}}
+      ELEVENLABS_VOICE_ID: ${ELEVENLABS_VOICE_ID:-}
+      ELEVENLABS_MODEL_QUICK: ${ELEVENLABS_MODEL_QUICK:-}
+      ELEVENLABS_MODEL_SHOW: ${ELEVENLABS_MODEL_SHOW:-}
+      VOICE_DAILY_CHARS: ${VOICE_DAILY_CHARS:-2500}
+    ports:
+      - "${API_PORT:-8090}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/app/api", "-healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  ai:
+    build:
+      context: ./apps/ai
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      DATABASE_URL: postgres://${POSTGRES_USER:-ontheboard}:${POSTGRES_PASSWORD:-ontheboard}@postgres:5432/${POSTGRES_DB:-ontheboard}
+      QDRANT_URL: http://qdrant:6333
+      INTERNAL_TOKEN: ${AI_SERVICE_TOKEN:-dev-internal-token}
+      # The key comes from .env (gitignored) or the shell, never from this file,
+      # and only this service receives it. Empty selects the deterministic fake
+      # provider, so the pipeline still runs end to end with no key. OPEN_AI_SECRET_KEY
+      # is accepted as an alternative name. See apps/ai/app/providers/.
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPEN_AI_SECRET_KEY: ${OPEN_AI_SECRET_KEY:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-auto}
+      # One model per role; see apps/ai/app/config.py for why they are split.
+      MODEL_STRONG: ${MODEL_STRONG:-gpt-5.5}
+      MODEL_JUDGE: ${MODEL_JUDGE:-gpt-5.4}
+      MODEL_FAST: ${MODEL_FAST:-gpt-5.4-mini}
+      REASONING_EFFORT_STRONG: ${REASONING_EFFORT_STRONG:-}
+      REASONING_EFFORT_JUDGE: ${REASONING_EFFORT_JUDGE:-}
+      REASONING_EFFORT_FAST: ${REASONING_EFFORT_FAST:-}
+      PANEL_SIZE: ${PANEL_SIZE:-60}
+      PANEL_WAVE_SIZE: ${PANEL_WAVE_SIZE:-20}
+      PANEL_CONCURRENCY: ${PANEL_CONCURRENCY:-12}
+      AUTO_APPROVE: ${AUTO_APPROVE:-false}
+      WORKER_ENABLED: ${WORKER_ENABLED:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
+      COHERE_API_KEY: ${COHERE_API_KEY:-}
+    ports:
+      - "${AI_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        # Started, not healthy: the image ships no shell tooling to probe with,
+        # and the AI service degrades to lexical dedup when Qdrant is missing
+        # (ARCHITECTURE 9). It is deliberately not a hard dependency.
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/healthz', timeout=3).status==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 25s
+
+  web:
+    build:
+      # The web app is an npm workspace: it builds from the repository root so it
+      # can install from the root lockfile.
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        # Blank on purpose: the app and the API share one address (nginx proxies /v1),
+        # so it works from any device, including through a tunnel. An absolute
+        # address here would point every visitor at their own localhost.
+        VITE_API_URL: ${WEB_API_URL:-}
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8088}:80"
+    depends_on:
+      api:
+        condition: service_started
+
+volumes:
+  postgres-data:
+  qdrant-data:
