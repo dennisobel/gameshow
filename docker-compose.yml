@@ -10,8 +10,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-ontheboard}
       # Deterministic collation so ORDER BY is stable across platforms.
       POSTGRES_INITDB_ARGS: "--locale=C --encoding=UTF8"
-    ports:
-      - "${POSTGRES_PORT:-15432}:5432"
+    # No published port: the other services reach it as postgres:5432 on the
+    # private network. (docker-compose.dev.yml publishes it to localhost for tools.)
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
@@ -27,9 +27,6 @@ services:
     environment:
       QDRANT__SERVICE__GRPC_PORT: 6334
       QDRANT__LOG_LEVEL: WARN
-    ports:
-      - "${QDRANT_PORT:-16333}:6333"
-      - "${QDRANT_GRPC_PORT:-16334}:6334"
     volumes:
       - qdrant-data:/qdrant/storage
 
@@ -60,8 +57,6 @@ services:
       ELEVENLABS_MODEL_QUICK: ${ELEVENLABS_MODEL_QUICK:-}
       ELEVENLABS_MODEL_SHOW: ${ELEVENLABS_MODEL_SHOW:-}
       VOICE_DAILY_CHARS: ${VOICE_DAILY_CHARS:-2500}
-    ports:
-      - "${API_PORT:-8090}:8080"
     depends_on:
       postgres:
         condition: service_healthy
@@ -104,8 +99,6 @@ services:
       LOG_LEVEL: ${LOG_LEVEL:-info}
       LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
       COHERE_API_KEY: ${COHERE_API_KEY:-}
-    ports:
-      - "${AI_PORT:-8000}:8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -133,6 +126,10 @@ services:
         # address here would point every visitor at their own localhost.
         VITE_API_URL: ${WEB_API_URL:-}
     restart: unless-stopped
+    # The ONLY port this stack publishes. nginx serves the app and proxies /v1 (and
+    # the game's WebSockets) to the API over the private network, so nothing else
+    # needs a host port, and a server hosting other projects has one number to
+    # keep conflict-free. scripts/deploy.sh checks that it is free before starting.
     ports:
       - "${WEB_PORT:-8088}:80"
     depends_on:

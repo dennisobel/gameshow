@@ -1,9 +1,12 @@
 .DEFAULT_GOAL := help
-COMPOSE := docker compose
+# Local development publishes each service's port on localhost (the .dev.yml layer).
+# A server uses docker-compose.yml alone, which publishes only the web app: that is
+# what ./scripts/deploy.sh runs, and why it cannot collide with anything else.
+COMPOSE := docker compose -f docker-compose.yml -f docker-compose.dev.yml
 
 CLOUDFLARED ?= cloudflared
 
-.PHONY: help install up down logs ps rebuild clean migrate seed generate review editor-token reset-players tunnel test test-api test-ai test-web fmt
+.PHONY: help install up db deploy deploy-check down logs ps rebuild clean migrate seed generate review editor-token reset-players tunnel test test-api test-ai test-web fmt
 
 help: ## List targets
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
@@ -18,6 +21,15 @@ up: ## Build and start the whole stack
 	@echo "web  http://localhost:$${WEB_PORT:-8088}"
 	@echo "api  http://localhost:$${API_PORT:-8080}/healthz"
 	@echo "ai   http://localhost:$${AI_PORT:-8000}/healthz"
+
+db: ## Start only Postgres and Qdrant (to run the Go and Python services outside Docker)
+	$(COMPOSE) up -d postgres qdrant
+
+deploy-check: ## On a server: is the port free, what would .env gain? Changes nothing
+	./scripts/deploy.sh --check
+
+deploy: ## On a server: check the port, fill in secrets, build, start (git pull first to update)
+	./scripts/deploy.sh
 
 down: ## Stop the stack (keeps volumes)
 	$(COMPOSE) down

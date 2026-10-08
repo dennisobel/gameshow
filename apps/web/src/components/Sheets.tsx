@@ -17,6 +17,7 @@ import { useGame } from '@/game/GameContext'
 import { PERSONALITIES } from '@/game/host'
 import { HOST_NAME, SHOW_NAME } from '@/game/questions'
 import { api } from '@/api/client'
+import { copyText, isDismissal } from '@/lib/clipboard'
 import type { ApiLeaderRow } from '@/api/types'
 import { resultQuote, ShareCard } from '@/screens/Results'
 import { Sheet } from './ui/sheet'
@@ -149,23 +150,19 @@ export function ShareSheet() {
     .filter(Boolean)
     .join('\n')
   const share = async () => {
-    try {
-      if (navigator.share) await navigator.share({ title: SHOW_NAME, text })
-      else {
-        await navigator.clipboard.writeText(text)
-        showToast('Result copied to clipboard')
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: SHOW_NAME, text })
+        return
+      } catch (err) {
+        if (isDismissal(err)) return
+        /* sharing failed for another reason: fall back to copying */
       }
-    } catch {
-      /* share dismissed */
     }
+    showToast((await copyText(text)) ? 'Result copied to clipboard' : 'Copy not available here')
   }
   const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(text)
-      showToast('Result copied')
-    } catch {
-      showToast('Copy not available here')
-    }
+    showToast((await copyText(text)) ? 'Result copied' : 'Copy not available here')
   }
   return (
     <Sheet open={overlay === 'share'} onOpenChange={(o) => !o && setOverlay(null)} title="Share result">

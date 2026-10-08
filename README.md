@@ -36,6 +36,10 @@ make up                  # or: docker compose up -d --build
 | API | <http://localhost:8090/healthz> |
 | Generation service | <http://localhost:8000/docs> |
 
+`make up` also publishes the API, the AI service, Postgres and Qdrant on
+`127.0.0.1` for local tools (`docker-compose.dev.yml`). A server does not: see
+"Deploying to a server".
+
 The API applies its migrations and loads the seed bank on start, so the game is
 playable the moment the stack is up. `make down` stops it; `make clean` also
 deletes the data.
@@ -58,7 +62,7 @@ see either, they ask the API for a line and get audio back.
 
 ```bash
 # Postgres and Qdrant still come from compose
-docker compose up -d postgres qdrant
+make db
 
 make install                       # npm workspaces, Go modules, uv: once
 
@@ -73,6 +77,43 @@ cd apps/ai  && DATABASE_URL="postgres://ontheboard:ontheboard@localhost:15432/on
 # so it needs the API's address (or copy apps/web/.env.example to .env.local)
 VITE_API_URL=http://localhost:8090 npm run dev
 ```
+
+---
+
+## Deploying to a server
+
+```bash
+git clone git@github.com:dennisobel/gameshow.git && cd gameshow     # or, to update: git pull
+./scripts/deploy.sh --check     # is the port free? what would .env gain? changes nothing
+./scripts/deploy.sh             # check, create .env with real secrets, build, start, wait
+```
+
+**One port.** On a server the stack uses `docker-compose.yml` on its own, which
+publishes only the web app (`WEB_PORT`, default 8088). nginx serves the game and
+proxies `/v1`, WebSockets included, to the API over the stack's private network.
+Postgres, Qdrant, the API and the AI service have no host port at all. So on a machine
+that hosts other projects there is exactly one number to keep free; `deploy.sh`
+refuses to start, changing nothing, if something else already holds it and names a
+free one; and no database is ever reachable from the internet, even when a firewall
+allows every port (Docker publishes ports around the host firewall, so a firewall
+rule is not protection for a published port). The local-development ports live in
+`docker-compose.dev.yml`, bound to `127.0.0.1`.
+
+**Secrets.** `deploy.sh` creates `.env` (mode 600) with `APP_ENV=production` and fresh
+random `JWT_SECRET`, `AI_SERVICE_TOKEN` and `POSTGRES_PASSWORD`, and never changes a
+value that is already there. Add `OPENAI_API_KEY` and `ELEVENLABS_API_KEY` yourself
+for AI-written questions and the host's voice; without them the stack still runs, on
+the offline fake provider and the browser's voice.
+
+**Plain HTTP.** Served from a bare IP the game is at `http://<ip>:<port>`. The game,
+its WebSockets and the voice all work. Browsers disable the clipboard API on such
+pages, so the copy and invite buttons fall back to an older method and, failing that,
+show the code or link to read out. For HTTPS, terminate TLS in a reverse proxy and
+point it at the web port.
+
+**Backups.** The data is in two Docker volumes, `ontheboard_postgres-data` and
+`ontheboard_qdrant-data`. A dump of the database:
+`docker compose exec -T postgres pg_dump -U ontheboard ontheboard > backup.sql`.
 
 ---
 

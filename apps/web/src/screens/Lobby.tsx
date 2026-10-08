@@ -10,6 +10,7 @@ import { PlayerAvatar } from '@/components/PlayerAvatar'
 import { Dots, ScreenShell, TopBar } from '@/components/Stage'
 import { Button } from '@/components/ui/button'
 import { Segmented } from '@/components/ui/segmented'
+import { copyText, isDismissal } from '@/lib/clipboard'
 import { cn } from '@/lib/utils'
 
 type Presence = 'empty' | 'joined' | 'ready'
@@ -110,24 +111,21 @@ export function Lobby() {
 
   const link = `${window.location.origin}/r/${code}`
   const copyCode = async () => {
-    try {
-      await navigator.clipboard.writeText(code)
-      showToast(`Room code ${code} copied`)
-    } catch {
-      showToast(`Room code: ${code}`)
-    }
+    // When copying is not possible the code is put on screen to read out instead.
+    showToast((await copyText(code)) ? `Room code ${code} copied` : `Room code: ${code}`)
   }
   const invite = async () => {
     const text = `${state.players[0].name} has challenged you on ${SHOW_NAME}! Join with code ${code}: ${link}`
-    try {
-      if (navigator.share) await navigator.share({ title: SHOW_NAME, text })
-      else {
-        await navigator.clipboard.writeText(text)
-        showToast('Invite copied')
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: SHOW_NAME, text })
+        return
+      } catch (err) {
+        if (isDismissal(err)) return
+        /* sharing failed for another reason: fall back to copying */
       }
-    } catch {
-      /* dismissed */
     }
+    showToast((await copyText(text)) ? 'Invite copied' : `Send them this link: ${link}`)
   }
 
   const start = () => {
